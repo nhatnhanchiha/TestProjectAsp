@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Update="Generations\Generator.tt">
+        <Generator>TextTemplatingFileGenerator</Generator>
+        <LastGenOutput>Generator.cs</LastGenOutput>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Generations\Generator.cs">
+        <AutoGen>True</AutoGen>
+        <DesignTime>True</DesignTime>
+        <DependentUpon>Generator.tt</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Autofac" Version="6.2.0" />
+      <PackageReference Include="Casbin.NET" Version="1.11.0" />
+      <PackageReference Include="Casbin.NET.Adapter.EFCore" Version="1.7.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.Core" Version="2.2.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.9" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.12.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Test.DataTier\Test.DataTier.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="AutoMapperModules" />
+      <Folder Include="Commons" />
+      <Folder Include="ViewModels" />
+    </ItemGroup>
+
+</Project>
