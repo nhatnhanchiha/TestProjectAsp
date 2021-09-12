@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_bdf068901f3e4ca9aaac5864534a558a }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_61f8f34956bc40acb43f92e491f06c7b }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_f3574e9502a04fada92c9b8749087e98 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_140bcf00e57b4eb99b462e61d5e93d7f }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_bdf068901f3e4ca9aaac5864534a558a }}/TestImage:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_f3574e9502a04fada92c9b8749087e98 }}/vcbcsc1/test:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'AstrologyOnlineSe1416'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_fa8b4473967e4d1d99c2a9189f46a764 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_bdf068901f3e4ca9aaac5864534a558a }}/TestImage:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d15307b1097d457fa30b91e020eb466d }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_f3574e9502a04fada92c9b8749087e98 }}/vcbcsc1/test:${{ github.sha }}'
